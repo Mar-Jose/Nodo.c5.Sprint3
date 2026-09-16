@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-page: #ffffff;
+  --color-surface: #f4f3ec;
+  --color-heading: #08060d;
+  --color-body: #6b6375;
+  --color-border: #e5e4e7;
+  --color-link: #9333ea;
+  --font-sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+}
