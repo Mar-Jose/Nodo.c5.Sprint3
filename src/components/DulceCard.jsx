@@ -1,3 +1,5 @@
+import { formatearPrecio } from '../utils/formato'
+
 function DulceCard({ item, estaEnMiLista, toggleMiLista }) {
   const isInMyList = estaEnMiLista
 
@@ -75,7 +77,7 @@ function DulceCard({ item, estaEnMiLista, toggleMiLista }) {
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-muted">Precio</p>
           <p className="mt-1 text-2xl font-bold text-brand">
-            ${item.precio.toLocaleString('es-AR')}
+            {formatearPrecio(item.precio)}
           </p>
         </div>
 
