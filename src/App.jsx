@@ -4,7 +4,6 @@ import CarritoItem from './components/CarritoItem'
 import DulceList from './components/DulceList'
 import Navbar from './components/layout/Navbar'
 import { useCarritoContext } from './context/carritoContext'
-import { useThemeContext } from './context/themeContext'
 import { formatearPrecio } from './utils/formato'
 
 function App() {
@@ -20,8 +19,6 @@ function App() {
     quitar,
     vaciar,
   } = useCarritoContext()
-  const { toggleDarkMode } = useThemeContext()
-
   const categorias = useMemo(
     () => ['Todas', ...new Set(dulcesCatamarca.map((item) => item.categoria))],
     []
@@ -65,13 +62,6 @@ function App() {
               <h1 className="mt-2 text-4xl font-bold">Dulces regionales</h1>
               <p className="mt-2 text-slate-400">Elegí tus productos y ajustá las cantidades en tu carrito.</p>
             </div>
-            <button
-              type="button"
-              onClick={toggleDarkMode}
-              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 transition hover:bg-white/10"
-            >
-              Cambiar modo
-            </button>
           </div>
 
           <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
