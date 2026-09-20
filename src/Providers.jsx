@@ -1,5 +1,7 @@
+import { CarritoProvider } from './context/carritoContext'
+
 function Providers({ children }) {
-  return children
+  return <CarritoProvider>{children}</CarritoProvider>
 }
 
 export default Providers

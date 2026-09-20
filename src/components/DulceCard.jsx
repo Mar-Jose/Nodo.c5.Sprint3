@@ -1,6 +1,6 @@
 import { formatearPrecio } from '../utils/formato'
 
-function DulceCard({ item, estaEnMiLista, toggleMiLista }) {
+function DulceCard({ item, estaEnMiLista, toggleMiLista, onAgregarCarrito }) {
   const isInMyList = estaEnMiLista
 
   let toggleButton
@@ -81,7 +81,16 @@ function DulceCard({ item, estaEnMiLista, toggleMiLista }) {
           </p>
         </div>
 
-        <div className="w-full sm:w-auto">{toggleButton}</div>
+        <div className="flex w-full flex-col gap-2 sm:w-auto">
+          {toggleButton}
+          <button
+            type="button"
+            onClick={() => onAgregarCarrito(item)}
+            className="w-full rounded-full border border-brand/30 bg-brand px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-brand/80 sm:w-auto"
+          >
+            Agregar al carrito
+          </button>
+        </div>
       </div>
     </article>
   )

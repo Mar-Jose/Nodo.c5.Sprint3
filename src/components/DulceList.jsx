@@ -1,6 +1,6 @@
 import DulceCard from './DulceCard'
 
-function DulceList({ items = [], miLista = [], toggleMiLista }) {
+function DulceList({ items = [], miLista = [], toggleMiLista, onAgregarCarrito }) {
   if (!items.length) {
     return (
       <div className="rounded-2xl border border-dashed border-white/10 bg-surface/70 p-10 text-center text-slate-300">
@@ -13,11 +13,12 @@ function DulceList({ items = [], miLista = [], toggleMiLista }) {
   return (
     <section className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
       {items.map((item) => (
-        <ItemCard
+        <DulceCard
           key={item.id}
           item={item}
           estaEnMiLista={miLista.includes(item.id)}
           toggleMiLista={toggleMiLista}
+          onAgregarCarrito={onAgregarCarrito}
         />
       ))}
     </section>

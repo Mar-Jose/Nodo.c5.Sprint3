@@ -1,4 +1,5 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo } from 'react'
+import useLocalStorage from './useLocalStorage'
 
 function limitarCantidad(item, cantidad) {
   const cantidadNumerica = Math.max(0, Number(cantidad) || 0)
@@ -9,7 +10,7 @@ function limitarCantidad(item, cantidad) {
 }
 
 export function useCarrito() {
-  const [carrito, setCarrito] = useState([])
+  const [carrito, setCarrito] = useLocalStorage('carrito', [])
 
   const agregar = useCallback((item) => {
     setCarrito((actual) => {
@@ -31,7 +32,7 @@ export function useCarrito() {
         ? [...actual, { ...item, cantidad: cantidadInicial }]
         : actual
     })
-  }, [])
+  }, [setCarrito])
 
   const cambiarCantidad = useCallback((id, cantidad) => {
     setCarrito((actual) => actual
@@ -44,15 +45,15 @@ export function useCarrito() {
         }
       })
       .filter((item) => item.cantidad > 0))
-  }, [])
+  }, [setCarrito])
 
   const quitar = useCallback((id) => {
     setCarrito((actual) => actual.filter((item) => item.id !== id))
-  }, [])
+  }, [setCarrito])
 
   const vaciar = useCallback(() => {
     setCarrito([])
-  }, [])
+  }, [setCarrito])
 
   const cantidadTotal = useMemo(
     () => carrito.reduce((total, item) => total + item.cantidad, 0),
