@@ -4,6 +4,7 @@ import CarritoItem from './components/CarritoItem'
 import DulceList from './components/DulceList'
 import Navbar from './components/layout/Navbar'
 import { useCarritoContext } from './context/carritoContext'
+import { useThemeContext } from './context/themeContext'
 import { formatearPrecio } from './utils/formato'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     quitar,
     vaciar,
   } = useCarritoContext()
+  const { toggleDarkMode } = useThemeContext()
 
   const categorias = useMemo(
     () => ['Todas', ...new Set(dulcesCatamarca.map((item) => item.categoria))],
@@ -47,7 +49,7 @@ function App() {
   }
 
   return (
-    <>
+    <div>
       <Navbar
         lista={miLista}
         items={dulcesCatamarca}
@@ -55,12 +57,21 @@ function App() {
         onVaciarLista={() => setMiLista([])}
       />
 
-      <main className="min-h-screen bg-black font-sans text-white">
+      <main className="min-h-screen font-sans">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16 lg:py-20">
-          <div className="mb-8">
-            <p className="text-xs uppercase tracking-[0.2em] text-muted">Sabores de Catamarca</p>
-            <h1 className="mt-2 text-4xl font-bold">Dulces regionales</h1>
-            <p className="mt-2 text-slate-400">Elegí tus productos y ajustá las cantidades en tu carrito.</p>
+          <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted">Sabores de Catamarca</p>
+              <h1 className="mt-2 text-4xl font-bold">Dulces regionales</h1>
+              <p className="mt-2 text-slate-400">Elegí tus productos y ajustá las cantidades en tu carrito.</p>
+            </div>
+            <button
+              type="button"
+              onClick={toggleDarkMode}
+              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 transition hover:bg-white/10"
+            >
+              Cambiar modo
+            </button>
           </div>
 
           <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -143,7 +154,7 @@ function App() {
           </section>
         </div>
       </main>
-    </>
+    </div>
   )
 }
 
