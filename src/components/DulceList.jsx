@@ -1,6 +1,6 @@
 import DulceCard from './DulceCard'
 
-function DulceList({ items = [], miLista = [], toggleMiLista, onAgregarCarrito }) {
+function DulceList({ items = [] }) {
   if (!items.length) {
     return (
       <div className="rounded-2xl border border-dashed border-white/10 bg-surface/70 p-10 text-center text-slate-300">
@@ -16,9 +16,6 @@ function DulceList({ items = [], miLista = [], toggleMiLista, onAgregarCarrito }
         <DulceCard
           key={item.id}
           item={item}
-          estaEnMiLista={miLista.includes(item.id)}
-          toggleMiLista={toggleMiLista}
-          onAgregarCarrito={onAgregarCarrito}
         />
       ))}
     </section>

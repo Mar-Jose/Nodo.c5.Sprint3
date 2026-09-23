@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react'
+import { useListaContext } from '../../context/listaContext'
 
-function Navbar({ lista = [], items = [], onToggleItem, onVaciarLista }) {
+function Navbar({ items = [] }) {
   const [abierto, setAbierto] = useState(false)
+  const { lista, toggleItem, vaciarLista } = useListaContext()
 
   const hayItems = lista.length > 0
   const itemsSeleccionados = useMemo(
@@ -79,7 +81,7 @@ function Navbar({ lista = [], items = [], onToggleItem, onVaciarLista }) {
                 <div className="mb-4 flex justify-end">
                   <button
                     type="button"
-                    onClick={onVaciarLista}
+                    onClick={vaciarLista}
                     className="rounded-full border border-rose-400/40 bg-rose-500/10 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-rose-200 transition hover:bg-rose-500/20"
                   >
                     Vaciar mi lista
@@ -99,7 +101,7 @@ function Navbar({ lista = [], items = [], onToggleItem, onVaciarLista }) {
 
                       <button
                         type="button"
-                        onClick={() => onToggleItem(item.id)}
+                        onClick={() => toggleItem(item.id)}
                         className="rounded-full border border-rose-400/40 bg-rose-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-rose-200 transition hover:bg-rose-500/20"
                       >
                         Quitar

@@ -2,13 +2,18 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import Providers from './Providers.jsx'
+import { CarritoProvider } from './context/carritoContext'
+import { ListaProvider } from './context/listaContext'
+import { ThemeProvider } from './context/themeContext'
 
-//siguiente línea reveer creado x ia
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Providers>
-      <App />
-    </Providers>
+    <ThemeProvider>
+      <CarritoProvider>
+        <ListaProvider>
+          <App />
+        </ListaProvider>
+      </CarritoProvider>
+    </ThemeProvider>
   </StrictMode>,
 )

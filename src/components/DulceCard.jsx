@@ -1,7 +1,11 @@
 import { formatearPrecio } from '../utils/formato'
+import { useCarritoContext } from '../context/carritoContext'
+import { useListaContext } from '../context/listaContext'
 
-function DulceCard({ item, estaEnMiLista, toggleMiLista, onAgregarCarrito }) {
-  const isInMyList = estaEnMiLista
+function DulceCard({ item }) {
+  const { lista, toggleItem } = useListaContext()
+  const { agregar } = useCarritoContext()
+  const isInMyList = lista.includes(item.id)
 
   let toggleButton
   //booleano:
@@ -16,7 +20,7 @@ function DulceCard({ item, estaEnMiLista, toggleMiLista, onAgregarCarrito }) {
         </button>
         <button
           type="button"
-          onClick={() => toggleMiLista(item.id)}
+          onClick={() => toggleItem(item.id)}
           className="w-full rounded-full border border-rose-400/40 bg-rose-500/10 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-rose-200 transition hover:bg-rose-500/20 sm:w-auto"
         >
           Quitar
@@ -27,7 +31,7 @@ function DulceCard({ item, estaEnMiLista, toggleMiLista, onAgregarCarrito }) {
     toggleButton = (
       <button
         type="button"
-        onClick={() => toggleMiLista(item.id)}
+        onClick={() => toggleItem(item.id)}
         className="w-full rounded-full border border-brand/30 bg-brand/10 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-brand transition hover:bg-brand hover:text-white sm:w-auto"
       >
         + Agregar
@@ -85,7 +89,7 @@ function DulceCard({ item, estaEnMiLista, toggleMiLista, onAgregarCarrito }) {
           {toggleButton}
           <button
             type="button"
-            onClick={() => onAgregarCarrito(item)}
+            onClick={() => agregar(item)}
             className="w-full rounded-full border border-brand/30 bg-brand px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-brand/80 sm:w-auto"
           >
             Agregar al carrito
