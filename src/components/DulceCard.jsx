@@ -40,7 +40,7 @@ function DulceCard({ item }) {
   }
           //badge: destacado, nuevo, requiere refrigeración, en mi lista.
   return (
-    <article className="rounded-2xl border border-white/10 bg-surface p-4 shadow-lg shadow-brand/5 transition-transform duration-200 hover:-translate-y-1 sm:p-5">
+    <article className="rounded-2xl border border-white/10 bg-pink-700/80 p-4 shadow-lg shadow-brand/5 transition-transform duration-200 hover:-translate-y-1 sm:p-5">
       <div className="mb-4 flex flex-wrap gap-2">
         {item.destacado && (
           <span className="rounded-full bg-brand px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white">

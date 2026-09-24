@@ -25,10 +25,10 @@ function Navbar({ items = [] }) {
               <path
                 d="M12 22C12 15.4 17.4 10 24 10H40C46.6 10 52 15.4 52 22V25C52 27.8 49.8 30 47 30H17C14.2 30 12 27.8 12 25V22Z"
                 fill="#F8F7F4"
-                stroke="#E7E1D7"
+                stroke="#8b5b07e8"
                 strokeWidth="1.5"
               />
-              <rect x="12" y="29" width="40" height="8" rx="4" fill="#F1E6D2" />
+              <rect x="12" y="29" width="40" height="8" rx="4" fill="#88501ccc" />
               <path
                 d="M12 38C12 43.1 17.1 49 32 49C46.9 49 52 43.1 52 38V35H12V38Z"
                 fill="#F8F7F4"
