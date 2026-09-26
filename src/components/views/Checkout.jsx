@@ -53,10 +53,13 @@ function Checkout({ onVolver, onConfirmar }) {
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
-        <label className="block">
+        <label htmlFor="nombreCompleto" className="block">
           <span className="text-sm text-slate-300">Nombre completo</span>
           <input
+            id="nombreCompleto"
             type="text"
+            aria-invalid={errors.nombreCompleto ? 'true' : 'false'}
+            aria-describedby={errors.nombreCompleto ? 'nombreCompleto-error' : undefined}
             placeholder="Tu nombre completo"
             {...register('nombreCompleto', {
               required: 'El nombre completo es obligatorio.',
@@ -68,14 +71,19 @@ function Checkout({ onVolver, onConfirmar }) {
             className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-brand focus:outline-none"
           />
           {errors.nombreCompleto && (
-            <p className="mt-2 text-sm text-rose-300">{errors.nombreCompleto.message}</p>
+            <p id="nombreCompleto-error" className="mt-2 text-sm text-rose-300">
+              {errors.nombreCompleto.message}
+            </p>
           )}
         </label>
 
-        <label className="mt-4 block">
+        <label htmlFor="email" className="mt-4 block">
           <span className="text-sm text-slate-300">Email</span>
           <input
+            id="email"
             type="email"
+            aria-invalid={errors.email ? 'true' : 'false'}
+            aria-describedby={errors.email ? 'email-error' : undefined}
             placeholder="tu@email.com"
             {...register('email', {
               required: 'El email es obligatorio.',
@@ -87,14 +95,19 @@ function Checkout({ onVolver, onConfirmar }) {
             className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-brand focus:outline-none"
           />
           {errors.email && (
-            <p className="mt-2 text-sm text-rose-300">{errors.email.message}</p>
+            <p id="email-error" className="mt-2 text-sm text-rose-300">
+              {errors.email.message}
+            </p>
           )}
         </label>
 
-        <label className="mt-4 block">
+        <label htmlFor="telefono" className="mt-4 block">
           <span className="text-sm text-slate-300">Teléfono</span>
           <input
+            id="telefono"
             type="text"
+            aria-invalid={errors.telefono ? 'true' : 'false'}
+            aria-describedby={errors.telefono ? 'telefono-error' : undefined}
             inputMode="numeric"
             placeholder="3812345678"
             {...register('telefono', {
@@ -111,16 +124,21 @@ function Checkout({ onVolver, onConfirmar }) {
             className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-brand focus:outline-none"
           />
           {errors.telefono && (
-            <p className="mt-2 text-sm text-rose-300">{errors.telefono.message}</p>
+            <p id="telefono-error" className="mt-2 text-sm text-rose-300">
+              {errors.telefono.message}
+            </p>
           )}
         </label>
 
         <fieldset className="mt-6">
           <legend className="text-sm text-slate-300">Método de envío</legend>
           <div className="mt-2 space-y-2">
-            <label className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
+            <label htmlFor="envioDomicilio" className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
               <input
+                id="envioDomicilio"
                 type="radio"
+                aria-invalid={errors.metodoEnvio ? 'true' : 'false'}
+                aria-describedby={errors.metodoEnvio ? 'metodoEnvio-error' : undefined}
                 value="domicilio"
                 {...register('metodoEnvio', {
                   required: 'Elegí un método de envío.',
@@ -129,9 +147,12 @@ function Checkout({ onVolver, onConfirmar }) {
               />
               Envío a domicilio
             </label>
-            <label className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
+            <label htmlFor="retiroLocal" className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
               <input
+                id="retiroLocal"
                 type="radio"
+                aria-invalid={errors.metodoEnvio ? 'true' : 'false'}
+                aria-describedby={errors.metodoEnvio ? 'metodoEnvio-error' : undefined}
                 value="retiro"
                 {...register('metodoEnvio', {
                   required: 'Elegí un método de envío.',
@@ -142,15 +163,20 @@ function Checkout({ onVolver, onConfirmar }) {
             </label>
           </div>
           {errors.metodoEnvio && (
-            <p className="mt-2 text-sm text-rose-300">{errors.metodoEnvio.message}</p>
+            <p id="metodoEnvio-error" className="mt-2 text-sm text-rose-300">
+              {errors.metodoEnvio.message}
+            </p>
           )}
         </fieldset>
 
         {metodoEnvio === 'domicilio' && (
-          <label className="mt-4 block">
+          <label htmlFor="direccion" className="mt-4 block">
             <span className="text-sm text-slate-300">Dirección</span>
             <input
+              id="direccion"
               type="text"
+              aria-invalid={errors.direccion ? 'true' : 'false'}
+              aria-describedby={errors.direccion ? 'direccion-error' : undefined}
               placeholder="Tu dirección de entrega"
               {...register('direccion', {
                 required: 'La dirección es obligatoria para el envío a domicilio.',
@@ -158,15 +184,20 @@ function Checkout({ onVolver, onConfirmar }) {
               className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-brand focus:outline-none"
             />
             {errors.direccion && (
-              <p className="mt-2 text-sm text-rose-300">{errors.direccion.message}</p>
+              <p id="direccion-error" className="mt-2 text-sm text-rose-300">
+                {errors.direccion.message}
+              </p>
             )}
           </label>
         )}
 
-        <label className="mt-4 block">
+        <label htmlFor="notas" className="mt-4 block">
           <span className="text-sm text-slate-300">Notas (opcional)</span>
           <textarea
+            id="notas"
             rows="4"
+            aria-invalid={errors.notas ? 'true' : 'false'}
+            aria-describedby={errors.notas ? 'notas-error' : undefined}
             maxLength="200"
             placeholder="¿Querés agregar alguna indicación?"
             {...register('notas', {
@@ -178,13 +209,18 @@ function Checkout({ onVolver, onConfirmar }) {
             className="mt-2 w-full resize-y rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-brand focus:outline-none"
           />
           {errors.notas && (
-            <p className="mt-2 text-sm text-rose-300">{errors.notas.message}</p>
+            <p id="notas-error" className="mt-2 text-sm text-rose-300">
+              {errors.notas.message}
+            </p>
           )}
         </label>
 
-        <label className="mt-6 flex items-start gap-3 text-sm text-slate-300">
+        <label htmlFor="aceptaTerminos" className="mt-6 flex items-start gap-3 text-sm text-slate-300">
           <input
+            id="aceptaTerminos"
             type="checkbox"
+            aria-invalid={errors.aceptaTerminos ? 'true' : 'false'}
+            aria-describedby={errors.aceptaTerminos ? 'aceptaTerminos-error' : undefined}
             {...register('aceptaTerminos', {
               required: 'Debés aceptar los términos para confirmar el pedido.',
             })}
@@ -193,7 +229,9 @@ function Checkout({ onVolver, onConfirmar }) {
           <span>Acepto los términos y condiciones.</span>
         </label>
         {errors.aceptaTerminos && (
-          <p className="mt-2 text-sm text-rose-300">{errors.aceptaTerminos.message}</p>
+          <p id="aceptaTerminos-error" className="mt-2 text-sm text-rose-300">
+            {errors.aceptaTerminos.message}
+          </p>
         )}
 
         <div className="mt-6 flex flex-wrap justify-between gap-3">

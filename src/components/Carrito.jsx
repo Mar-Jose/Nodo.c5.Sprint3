@@ -30,6 +30,13 @@ function Carrito({ onIrAlCheckout }) {
           <p className="mt-2 text-sm text-slate-400">
             Elegí un dulce de la tienda y lo vas a encontrar acá.
           </p>
+          <button
+            type="button"
+            disabled
+            className="mt-5 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white opacity-40"
+          >
+            Ir al checkout
+          </button>
         </div>
       ) : (
         <>
@@ -55,7 +62,8 @@ function Carrito({ onIrAlCheckout }) {
               <button
                 type="button"
                 onClick={onIrAlCheckout}
-                className="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand/80"
+                disabled={carrito.length === 0}
+                className="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand/80 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Ir al checkout
               </button>

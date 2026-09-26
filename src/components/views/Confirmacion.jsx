@@ -2,10 +2,11 @@ function Confirmacion({ nombre, onVolverTienda }) {
   return (
     <section className="mx-auto max-w-2xl rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-8 text-center">
       <p className="text-xs uppercase tracking-[0.2em] text-emerald-200">Pedido confirmado</p>
-      <h1 className="mt-3 text-3xl font-bold text-white">¡Gracias por tu compra!</h1>
+      <h1 className="mt-3 text-3xl font-bold text-white">Gracias {nombre}</h1>
       <p className="mt-3 text-slate-300">
-        {nombre}, recibimos tu pedido. Pronto nos pondremos en contacto para coordinar la entrega.
+        Recibimos tu pedido. Pronto nos pondremos en contacto para coordinar la entrega.
       </p>
+      <p className="mt-3 text-emerald-200">Tu carrito está vacío.</p>
       <button
         type="button"
         onClick={onVolverTienda}
