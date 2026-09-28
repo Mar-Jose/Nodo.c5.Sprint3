@@ -68,7 +68,9 @@ function Carrito({ onIrAlCheckout }) {
                 Ir al checkout
               </button>
             </div>
-            <p className="text-xl font-bold text-brand">{formatearPrecio(total)}</p>
+            <p className="text-xl font-bold text-brand">
+              Total {formatearPrecio(total)}
+            </p>
           </div>
         </>
       )}
