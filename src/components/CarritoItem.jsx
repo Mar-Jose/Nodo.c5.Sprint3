@@ -23,7 +23,7 @@ function CarritoItem({ item, onCambiarCantidad, onQuitar }) {
           type="button"
           onClick={disminuirCantidad}
           aria-label={`Disminuir cantidad de ${item.nombre}`}
-          className="h-8 w-8 rounded-full border border-white/10 bg-white/5 text-lg text-white transition hover:bg-white/10"
+          className="h-8 w-8 rounded-full border border-red-400/40 bg-rose-500/10 text-lg text-rose-200 transition hover:bg-rose-500/20"
         >
           -
         </button>
@@ -33,7 +33,7 @@ function CarritoItem({ item, onCambiarCantidad, onQuitar }) {
           onClick={aumentarCantidad}
           disabled={item.stock != null && item.cantidad >= item.stock}
           aria-label={`Aumentar cantidad de ${item.nombre}`}
-          className="h-8 w-8 rounded-full border border-white/10 bg-white/5 text-lg text-white transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+          className="h-8 w-8 rounded-full border border-emerald-400/40 bg-emerald-500/10 text-lg text-emerald-200 transition hover:bg-emerald-500/20 disabled:cursor-not-allowed disabled:opacity-40"
         >
           +
         </button>

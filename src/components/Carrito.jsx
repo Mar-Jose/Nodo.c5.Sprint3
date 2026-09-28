@@ -13,7 +13,7 @@ function Carrito({ onIrAlCheckout }) {
   } = useCarritoContext()
 
   return (
-    <section className="mt-12 rounded-2xl border border-white/10 bg-surface p-5 sm:p-6">
+    <section className="mt-12 rounded-2xl border border-white/10 bg-blue-950 p-5 text-white sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-muted">Tu carrito</p>

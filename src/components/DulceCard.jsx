@@ -90,7 +90,7 @@ function DulceCard({ item }) {
           <button
             type="button"
             onClick={() => agregar(item)}
-            className="w-full rounded-full border border-brand/30 bg-brand px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-brand/80 sm:w-auto"
+            className="w-full rounded-full border border-brand/30 bg-brand px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white transition hover:border-emerald-600 hover:bg-emerald-600 sm:w-auto"
           >
             Agregar al carrito
           </button>
