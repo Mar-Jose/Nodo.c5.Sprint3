@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react'
 import { useListaContext } from '../../context/listaContext'
+import { useThemeContext } from '../../context/themeContext'
 
 function Navbar({ items = [] }) {
   const [abierto, setAbierto] = useState(false)
   const { lista, toggleItem, vaciarLista } = useListaContext()
+  const { isDarkMode } = useThemeContext()
 
   const hayItems = lista.length > 0
   const itemsSeleccionados = useMemo(
@@ -13,7 +15,7 @@ function Navbar({ items = [] }) {
 
   return (
     <>
-      <nav className="border-b border-white/10 bg-surface/80 backdrop-blur-sm">
+      <nav className={`border-b border-white/10 ${isDarkMode ? 'bg-black' : 'bg-surface/80'} backdrop-blur-sm`}>
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
           <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <svg

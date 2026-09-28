@@ -11,7 +11,7 @@ export function ThemeProvider({ children }) {
   }, [setIsDarkMode])
 
   return (
-    <ThemeContext.Provider value={{ toggleDarkMode }}>
+    <ThemeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
       <div className={isDarkMode ? 'min-h-screen bg-black text-white' : 'min-h-screen bg-page text-heading'}>
         {children}
         <button
