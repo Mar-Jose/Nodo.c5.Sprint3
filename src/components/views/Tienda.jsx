@@ -60,7 +60,7 @@ function Tienda() {
             value={busqueda}
             onChange={(event) => setBusqueda(event.target.value)}
             placeholder="Buscar por nombre u origen..."
-            className="w-full rounded-full border border-white/10 bg-surface px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-brand focus:outline-none"
+            className="w-full rounded-full border border-white/10 bg-surface px-4 py-3 text-sm text-black placeholder:text-black focus:border-brand focus:outline-none"
           />
         </label>
       </div>
