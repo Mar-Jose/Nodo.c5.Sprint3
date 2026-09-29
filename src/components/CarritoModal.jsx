@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useCarritoContext } from '../context/carritoContext'
 import { useThemeContext } from '../context/themeContext'
 import { formatearPrecio } from '../utils/formato'
 import CarritoItem from './CarritoItem'
+import Modal from './ui/Modal'
 
 function CarritoModal({ onIrAlCheckout }) {
   const [abierto, setAbierto] = useState(false)
@@ -15,17 +16,6 @@ function CarritoModal({ onIrAlCheckout }) {
     vaciar,
   } = useCarritoContext()
   const { isDarkMode } = useThemeContext()
-
-  useEffect(() => {
-    if (!abierto) return undefined
-
-    const cerrarConEscape = (event) => {
-      if (event.key === 'Escape') setAbierto(false)
-    }
-
-    document.addEventListener('keydown', cerrarConEscape)
-    return () => document.removeEventListener('keydown', cerrarConEscape)
-  }, [abierto])
 
   const irAlCheckout = () => {
     setAbierto(false)
@@ -51,23 +41,16 @@ function CarritoModal({ onIrAlCheckout }) {
         </span>
       </button>
 
-      {abierto && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4 backdrop-blur-sm"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) setAbierto(false)
-          }}
-        >
-          <section
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="carrito-modal-title"
-            className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-white/10 bg-blue-950 p-5 text-white shadow-2xl sm:p-6"
-          >
+      <Modal
+        isOpen={abierto}
+        onClose={() => setAbierto(false)}
+        ariaLabel="Carrito de compras"
+        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-white/10 bg-blue-950 p-5 text-white shadow-2xl sm:p-6"
+      >
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] text-muted">Tu carrito</p>
-                <h2 id="carrito-modal-title" className="mt-1 text-2xl font-bold">
+                <h2 className="mt-1 text-2xl font-bold">
                   Productos seleccionados
                 </h2>
               </div>
@@ -127,9 +110,7 @@ function CarritoModal({ onIrAlCheckout }) {
                 </div>
               </>
             )}
-          </section>
-        </div>
-      )}
+      </Modal>
     </>
   )
 }

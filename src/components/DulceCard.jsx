@@ -4,8 +4,9 @@ import { useListaContext } from '../context/listaContext'
 
 function DulceCard({ item }) {
   const { lista, toggleItem } = useListaContext()
-  const { agregar } = useCarritoContext()
+  const { agregar, estaEnElCarrito } = useCarritoContext()
   const isInMyList = lista.includes(item.id)
+  const isInCart = estaEnElCarrito(item.id)
 
   let toggleButton
   //booleano:
@@ -60,6 +61,11 @@ function DulceCard({ item }) {
         {isInMyList && (
           <span className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-200">
             En mi lista
+          </span>
+        )}
+        {isInCart && (
+          <span className="rounded-full border border-sky-400/40 bg-sky-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-sky-200">
+            Agregado a mi carrito
           </span>
         )}
       </div>

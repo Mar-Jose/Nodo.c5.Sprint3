@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import CarritoModal from '../CarritoModal'
+import Modal from '../ui/Modal'
 import { useListaContext } from '../../context/listaContext'
 import { useThemeContext } from '../../context/themeContext'
 
@@ -59,9 +60,11 @@ function Navbar({ items = [], onIrAlCheckout }) {
         </div>
       </nav>
 
-      {abierto && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-xl rounded-2xl border border-white/10 bg-surface p-6 shadow-2xl shadow-brand/10">
+      <Modal
+        isOpen={abierto}
+        onClose={() => setAbierto(false)}
+        ariaLabel="Mi lista de dulces guardados"
+      >
             <div className="mb-5 flex items-center justify-between gap-3">
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] text-muted">Mi lista</p>
@@ -117,9 +120,7 @@ function Navbar({ items = [], onIrAlCheckout }) {
                 </ul>
               </>
             )}
-          </div>
-        </div>
-      )}
+      </Modal>
     </>
   )
 }
