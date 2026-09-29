@@ -33,7 +33,7 @@ function Checkout({ onVolver, onConfirmar }) {
   }
 
   return (
-    <section className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-surface p-5 sm:p-8">
+    <section className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-indigo-950 p-5 text-white sm:p-8">
       <p className="text-xs uppercase tracking-[0.2em] text-muted">Checkout</p>
       <h1 className="mt-2 text-3xl font-bold">Confirmá tu compra</h1>
       <p className="mt-2 text-slate-400">Completá tu nombre para finalizar el pedido.</p>

@@ -63,9 +63,9 @@ function Carrito({ onIrAlCheckout }) {
                 type="button"
                 onClick={onIrAlCheckout}
                 disabled={carrito.length === 0}
-                className="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand/80 disabled:cursor-not-allowed disabled:opacity-40"
+                className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-200 transition hover:bg-emerald-500/20 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                Ir al checkout
+                Realizar compra
               </button>
             </div>
             <p className="text-xl font-bold text-brand">
