@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Carrito from './components/Carrito'
 import Navbar from './components/layout/Navbar'
 import Checkout from './components/views/Checkout'
 import Confirmacion from './components/views/Confirmacion'
@@ -42,14 +41,18 @@ function App() {
     return (
       <>
         <Tienda />
-        <Carrito onIrAlCheckout={() => setVista(VISTAS.CHECKOUT)} />
       </>
     )
   }
 
   return (
     <div>
-      {vista === VISTAS.TIENDA && <Navbar items={dulcesCatamarca} />}
+      {vista === VISTAS.TIENDA && (
+        <Navbar
+          items={dulcesCatamarca}
+          onIrAlCheckout={() => setVista(VISTAS.CHECKOUT)}
+        />
+      )}
 
       <main className="min-h-screen font-sans">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16 lg:py-20">

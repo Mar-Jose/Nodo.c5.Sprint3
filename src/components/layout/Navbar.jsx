@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react'
+import CarritoModal from '../CarritoModal'
 import { useListaContext } from '../../context/listaContext'
 import { useThemeContext } from '../../context/themeContext'
 
-function Navbar({ items = [] }) {
+function Navbar({ items = [], onIrAlCheckout }) {
   const [abierto, setAbierto] = useState(false)
   const { lista, toggleItem, vaciarLista } = useListaContext()
   const { isDarkMode } = useThemeContext()
@@ -42,16 +43,19 @@ function Navbar({ items = [] }) {
             <div className="truncate text-sm font-semibold text-white sm:text-lg">Dulces Catamarca</div>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setAbierto((actual) => !actual)}
-            className="inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-2.5 py-1.5 text-xs font-medium text-brand transition hover:bg-brand hover:text-white sm:gap-2 sm:px-3 sm:text-sm"
-          >
-            <span>Mi lista</span>
-            {hayItems && (
-              <span className="rounded-full bg-brand px-1.5 py-0.5 text-[10px] text-white sm:px-2 sm:text-xs">{lista.length}</span>
-            )}
-          </button>
+          <div className="flex items-center gap-2">
+            <CarritoModal onIrAlCheckout={onIrAlCheckout} />
+            <button
+              type="button"
+              onClick={() => setAbierto((actual) => !actual)}
+              className="inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-2.5 py-1.5 text-xs font-medium text-brand transition hover:bg-brand hover:text-white sm:gap-2 sm:px-3 sm:text-sm"
+            >
+              <span>Mi lista</span>
+              {hayItems && (
+                <span className="rounded-full bg-brand px-1.5 py-0.5 text-[10px] text-white sm:px-2 sm:text-xs">{lista.length}</span>
+              )}
+            </button>
+          </div>
         </div>
       </nav>
 
