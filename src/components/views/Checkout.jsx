@@ -1,9 +1,14 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useCarritoContext } from '../../context/carritoContext'
 import { formatearPrecio } from '../../utils/formato'
 
 function Checkout({ onVolver, onConfirmar }) {
   const { carrito, total } = useCarritoContext()
+  const [cupon, setCupon] = useState('')
+  const codigoCuponValido = cupon.trim().toUpperCase() === 'NODO10'
+  const descuento = codigoCuponValido ? Math.round(total * 0.1) : 0
+  const totalFinal = total - descuento
   const {
     register,
     handleSubmit,
@@ -25,8 +30,11 @@ function Checkout({ onVolver, onConfirmar }) {
       direccion: datos.metodoEnvio === 'domicilio' ? datos.direccion : null,
       notas: datos.notas || '',
       aceptaTerminos: datos.aceptaTerminos,
+      cupon: codigoCuponValido ? 'NODO10' : null,
+      descuento,
       items: carrito,
-      total,
+      total: totalFinal,
+      subtotal: total,
     }
 
     onConfirmar(pedido)
@@ -47,12 +55,51 @@ function Checkout({ onVolver, onConfirmar }) {
         ))}
       </div>
 
-      <div className="mt-5 flex justify-between gap-3 border-t border-token-white/10 pt-4 text-base font-bold sm:text-lg">
-        <span>Total</span>
-        <span className="text-brand">{formatearPrecio(total)}</span>
+      <div className="mt-5 space-y-2 border-t border-token-white/10 pt-4 text-sm">
+        <div className="flex justify-between gap-3">
+          <span>Subtotal</span>
+          <span>{formatearPrecio(total)}</span>
+        </div>
+        {codigoCuponValido && (
+          <div className="flex justify-between gap-3 text-token-emerald-200">
+            <span>Descuento NODO10 (10%)</span>
+            <span>−{formatearPrecio(descuento)}</span>
+          </div>
+        )}
+        <div className="flex justify-between gap-3 pt-1 text-base font-bold sm:text-lg">
+          <span>Total</span>
+          <span className="text-brand">{formatearPrecio(totalFinal)}</span>
+        </div>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
+        <label htmlFor="cupon" className="block">
+          <span className="text-sm text-token-slate-300">Cupón de descuento</span>
+          <input
+            id="cupon"
+            type="text"
+            value={cupon}
+            onChange={(event) => setCupon(event.target.value)}
+            aria-describedby={cupon.length > 0 ? 'cupon-estado' : undefined}
+            placeholder="Ingresá NODO10"
+            autoComplete="off"
+            className="mt-2 w-full rounded-xl border border-token-white/10 bg-token-white/5 px-4 py-3 uppercase text-token-white placeholder:normal-case placeholder:text-token-slate-400 focus:border-brand focus:outline-none"
+          />
+          {cupon.length > 0 && (
+            <p
+              id="cupon-estado"
+              role="status"
+              className={`mt-2 text-sm ${
+                codigoCuponValido ? 'text-token-emerald-200' : 'text-token-rose-300'
+              }`}
+            >
+              {codigoCuponValido
+                ? 'Cupón aplicado: 10% de descuento.'
+                : 'El código ingresado no es válido.'}
+            </p>
+          )}
+        </label>
+
         <label htmlFor="nombreCompleto" className="block">
           <span className="text-sm text-token-slate-300">Nombre completo</span>
           <input

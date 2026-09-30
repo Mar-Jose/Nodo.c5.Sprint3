@@ -47,9 +47,21 @@ function HistorialPedidos({ pedidos = [] }) {
             <span className="text-token-pink-800">
               {pedido.metodoEnvio === 'domicilio' ? 'Envío a domicilio' : 'Retiro en el local'}
             </span>
-            <span className="font-bold text-token-pink-950">
-              Total {formatearPrecio(pedido.total)}
-            </span>
+            <div className="text-right">
+              {pedido.descuento > 0 && (
+                <>
+                  <p className="text-token-pink-800">
+                    Subtotal {formatearPrecio(pedido.subtotal)}
+                  </p>
+                  <p className="text-token-pink-800">
+                    Cupón {pedido.cupon}: −{formatearPrecio(pedido.descuento)}
+                  </p>
+                </>
+              )}
+              <p className="font-bold text-token-pink-950">
+                Total {formatearPrecio(pedido.total)}
+              </p>
+            </div>
           </div>
         </li>
       ))}
