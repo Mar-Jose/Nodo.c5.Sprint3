@@ -29,7 +29,7 @@ function CarritoModal({ onIrAlCheckout }) {
         onClick={() => setAbierto(true)}
         aria-haspopup="dialog"
         aria-expanded={abierto}
-        className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-xs font-medium transition sm:gap-2 sm:px-3 sm:text-sm ${
+        className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1.5 text-xs font-medium transition sm:gap-2 sm:px-3 sm:text-sm ${
           isDarkMode
             ? 'border-white/10 bg-white/5 text-white hover:bg-white/10'
             : 'border-emerald-800/30 bg-emerald-700/10 text-emerald-950 hover:bg-emerald-700/20'

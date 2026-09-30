@@ -69,11 +69,11 @@ function DulceCard({ item }) {
       </div>
       <p className="text-xs uppercase tracking-[0.2em] text-muted">{item.categoria}</p>
 
-      <h2 className="mt-3 font-display text-2xl font-bold text-white">{item.nombre}</h2>
+      <h2 className="mt-3 break-words font-display text-xl font-bold text-white sm:text-2xl">{item.nombre}</h2>
 
-      <div className="mt-3 flex items-center justify-between text-sm text-slate-300">
-        <span>{item.origen}</span>
-        <span className="font-medium text-amber-300">★ {item.puntaje.toFixed(1)}</span>
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-300">
+        <span className="break-words">{item.origen}</span>
+        <span className="shrink-0 font-medium text-amber-300">★ {item.puntaje.toFixed(1)}</span>
       </div>
 
       <div className="mt-4">

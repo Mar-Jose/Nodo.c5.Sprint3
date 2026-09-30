@@ -10,7 +10,7 @@ function CarritoItem({ item, onCambiarCantidad, onQuitar }) {
   }
 
   return (
-    <li className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/5 p-3">
+    <li className="flex flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
       <div className="min-w-0">
         <p className="truncate font-medium text-white">{item.nombre}</p>
         <p className="text-sm text-slate-400">
@@ -18,7 +18,7 @@ function CarritoItem({ item, onCambiarCantidad, onQuitar }) {
         </p>
       </div>
 
-      <div className="flex shrink-0 items-center gap-2">
+      <div className="flex flex-wrap items-center justify-end gap-2">
         <button
           type="button"
           onClick={disminuirCantidad}
@@ -40,7 +40,7 @@ function CarritoItem({ item, onCambiarCantidad, onQuitar }) {
         <button
           type="button"
           onClick={() => onQuitar(item.id)}
-          className="ml-2 rounded-full border border-rose-400/40 bg-rose-500/10 px-3 py-2 text-xs text-rose-200 transition hover:bg-rose-500/20"
+          className="rounded-full border border-rose-400/40 bg-rose-500/10 px-3 py-2 text-xs text-rose-200 transition hover:bg-rose-500/20 sm:ml-2"
         >
           Quitar
         </button>

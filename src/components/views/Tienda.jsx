@@ -29,7 +29,7 @@ function Tienda() {
       <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-muted">Sabores de Catamarca</p>
-          <h1 className="mt-2 text-4xl font-bold">Dulces regionales</h1>
+          <h1 className="mt-2 text-3xl font-bold sm:text-4xl">Dulces regionales</h1>
           <p className="mt-2 text-slate-400">Elegí tus productos y ajustá las cantidades en tu carrito.</p>
         </div>
       </div>

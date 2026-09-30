@@ -33,21 +33,21 @@ function Checkout({ onVolver, onConfirmar }) {
   }
 
   return (
-    <section className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-indigo-950 p-5 text-white sm:p-8">
+    <section className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-indigo-950 p-4 text-white sm:p-8">
       <p className="text-xs uppercase tracking-[0.2em] text-muted">Checkout</p>
-      <h1 className="mt-2 text-3xl font-bold">Confirmá tu compra</h1>
+      <h1 className="mt-2 text-2xl font-bold sm:text-3xl">Confirmá tu compra</h1>
       <p className="mt-2 text-slate-400">Completá tu nombre para finalizar el pedido.</p>
 
       <div className="mt-6 space-y-3">
         {carrito.map((item) => (
-          <div key={item.id} className="flex justify-between gap-4 rounded-xl bg-white/5 p-3 text-sm">
-            <span>{item.nombre} x {item.cantidad}</span>
-            <span>{formatearPrecio(item.precio * item.cantidad)}</span>
+          <div key={item.id} className="flex flex-wrap justify-between gap-2 rounded-xl bg-white/5 p-3 text-sm">
+            <span className="min-w-0 break-words">{item.nombre} x {item.cantidad}</span>
+            <span className="shrink-0">{formatearPrecio(item.precio * item.cantidad)}</span>
           </div>
         ))}
       </div>
 
-      <div className="mt-5 flex justify-between border-t border-white/10 pt-4 text-lg font-bold">
+      <div className="mt-5 flex justify-between gap-3 border-t border-white/10 pt-4 text-base font-bold sm:text-lg">
         <span>Total</span>
         <span className="text-brand">{formatearPrecio(total)}</span>
       </div>

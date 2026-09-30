@@ -45,12 +45,12 @@ function Navbar({ items = [], onIrAlCheckout }) {
               <div className="truncate text-sm font-semibold text-white sm:text-lg">Dulces Catamarca</div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
               <CarritoModal onIrAlCheckout={onIrAlCheckout} />
               <button
                 type="button"
                 onClick={() => setAbierto((actual) => !actual)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-2.5 py-1.5 text-xs font-medium text-brand transition hover:bg-brand hover:text-white sm:gap-2 sm:px-3 sm:text-sm"
+                className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-brand/30 bg-brand/10 px-2.5 py-1.5 text-xs font-medium text-brand transition hover:bg-brand hover:text-white sm:gap-2 sm:px-3 sm:text-sm"
               >
                 <span>Mi lista</span>
                 {hayItems && (

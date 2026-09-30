@@ -55,7 +55,7 @@ function App() {
       )}
 
       <main className="min-h-screen font-sans">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-16 lg:py-20">
           {renderVista()}
         </div>
       </main>
