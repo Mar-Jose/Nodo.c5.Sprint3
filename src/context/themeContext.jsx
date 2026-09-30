@@ -12,14 +12,15 @@ export function ThemeProvider({ children }) {
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
-      <div className={isDarkMode ? 'min-h-screen bg-black text-white' : 'min-h-screen bg-page text-heading'}>
+      <div className={isDarkMode ? 'min-h-screen bg-token-black text-token-white' : 'min-h-screen bg-page text-heading'}>
         {children}
         <button
           type="button"
           onClick={toggleDarkMode}
-          className="fixed bottom-4 right-4 z-50 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm text-slate-200 shadow-lg backdrop-blur transition hover:bg-white/20"
+          aria-pressed={isDarkMode}
+          className="fixed bottom-4 right-4 z-50 rounded-full border border-token-white/10 bg-token-white/10 px-4 py-2 text-sm text-token-slate-200 shadow-lg backdrop-blur transition hover:bg-token-white/20"
         >
-          Cambiar fondo-color
+          Modo {isDarkMode ? 'oscuro' : 'claro'}: activado
         </button>
       </div>
     </ThemeContext.Provider>

@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 function Modal({
   isOpen,
   onClose,
   ariaLabel,
   children,
-  className = 'w-full max-w-xl rounded-2xl border border-white/10 bg-surface p-6 shadow-2xl shadow-brand/10',
+  className = 'w-full max-w-xl rounded-2xl border border-token-white/10 bg-surface p-6 shadow-2xl shadow-brand/10',
 }) {
   useEffect(() => {
     if (!isOpen) return undefined
@@ -20,9 +21,9 @@ function Modal({
 
   if (!isOpen) return null
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-3 backdrop-blur-sm sm:p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-token-slate-950/70 p-3 backdrop-blur-sm sm:p-4"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose()
       }}
@@ -35,7 +36,8 @@ function Modal({
       >
         {children}
       </section>
-    </div>
+    </div>,
+    document.body
   )
 }
 

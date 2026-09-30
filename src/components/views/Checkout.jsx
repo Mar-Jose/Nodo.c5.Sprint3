@@ -33,28 +33,28 @@ function Checkout({ onVolver, onConfirmar }) {
   }
 
   return (
-    <section className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-indigo-950 p-4 text-white sm:p-8">
+    <section className="mx-auto max-w-2xl rounded-2xl border border-token-white/10 bg-token-indigo-950 p-4 text-token-white sm:p-8">
       <p className="text-xs uppercase tracking-[0.2em] text-muted">Checkout</p>
       <h1 className="mt-2 text-2xl font-bold sm:text-3xl">Confirmá tu compra</h1>
-      <p className="mt-2 text-slate-400">Completá tu nombre para finalizar el pedido.</p>
+      <p className="mt-2 text-token-slate-400">Completá tu nombre para finalizar el pedido.</p>
 
       <div className="mt-6 space-y-3">
         {carrito.map((item) => (
-          <div key={item.id} className="flex flex-wrap justify-between gap-2 rounded-xl bg-white/5 p-3 text-sm">
+          <div key={item.id} className="flex flex-wrap justify-between gap-2 rounded-xl bg-token-white/5 p-3 text-sm">
             <span className="min-w-0 break-words">{item.nombre} x {item.cantidad}</span>
             <span className="shrink-0">{formatearPrecio(item.precio * item.cantidad)}</span>
           </div>
         ))}
       </div>
 
-      <div className="mt-5 flex justify-between gap-3 border-t border-white/10 pt-4 text-base font-bold sm:text-lg">
+      <div className="mt-5 flex justify-between gap-3 border-t border-token-white/10 pt-4 text-base font-bold sm:text-lg">
         <span>Total</span>
         <span className="text-brand">{formatearPrecio(total)}</span>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
         <label htmlFor="nombreCompleto" className="block">
-          <span className="text-sm text-slate-300">Nombre completo</span>
+          <span className="text-sm text-token-slate-300">Nombre completo</span>
           <input
             id="nombreCompleto"
             type="text"
@@ -68,17 +68,17 @@ function Checkout({ onVolver, onConfirmar }) {
                 message: 'El nombre debe tener al menos 3 caracteres.',
               },
             })}
-            className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-brand focus:outline-none"
+            className="mt-2 w-full rounded-xl border border-token-white/10 bg-token-white/5 px-4 py-3 text-token-white placeholder:text-token-slate-400 focus:border-brand focus:outline-none"
           />
           {errors.nombreCompleto && (
-            <p id="nombreCompleto-error" className="mt-2 text-sm text-rose-300">
+            <p id="nombreCompleto-error" className="mt-2 text-sm text-token-rose-300">
               {errors.nombreCompleto.message}
             </p>
           )}
         </label>
 
         <label htmlFor="email" className="mt-4 block">
-          <span className="text-sm text-slate-300">Email</span>
+          <span className="text-sm text-token-slate-300">Email</span>
           <input
             id="email"
             type="email"
@@ -92,17 +92,17 @@ function Checkout({ onVolver, onConfirmar }) {
                 message: 'Ingresá un email válido.',
               },
             })}
-            className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-brand focus:outline-none"
+            className="mt-2 w-full rounded-xl border border-token-white/10 bg-token-white/5 px-4 py-3 text-token-white placeholder:text-token-slate-400 focus:border-brand focus:outline-none"
           />
           {errors.email && (
-            <p id="email-error" className="mt-2 text-sm text-rose-300">
+            <p id="email-error" className="mt-2 text-sm text-token-rose-300">
               {errors.email.message}
             </p>
           )}
         </label>
 
         <label htmlFor="telefono" className="mt-4 block">
-          <span className="text-sm text-slate-300">Teléfono</span>
+          <span className="text-sm text-token-slate-300">Teléfono</span>
           <input
             id="telefono"
             type="text"
@@ -121,19 +121,19 @@ function Checkout({ onVolver, onConfirmar }) {
                 message: 'El teléfono debe tener al menos 8 números.',
               },
             })}
-            className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-brand focus:outline-none"
+            className="mt-2 w-full rounded-xl border border-token-white/10 bg-token-white/5 px-4 py-3 text-token-white placeholder:text-token-slate-400 focus:border-brand focus:outline-none"
           />
           {errors.telefono && (
-            <p id="telefono-error" className="mt-2 text-sm text-rose-300">
+            <p id="telefono-error" className="mt-2 text-sm text-token-rose-300">
               {errors.telefono.message}
             </p>
           )}
         </label>
 
         <fieldset className="mt-6">
-          <legend className="text-sm text-slate-300">Método de envío</legend>
+          <legend className="text-sm text-token-slate-300">Método de envío</legend>
           <div className="mt-2 space-y-2">
-            <label htmlFor="envioDomicilio" className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
+            <label htmlFor="envioDomicilio" className="flex items-center gap-3 rounded-xl border border-token-white/10 bg-token-white/5 px-4 py-3 text-sm text-token-slate-200">
               <input
                 id="envioDomicilio"
                 type="radio"
@@ -147,7 +147,7 @@ function Checkout({ onVolver, onConfirmar }) {
               />
               Envío a domicilio
             </label>
-            <label htmlFor="retiroLocal" className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
+            <label htmlFor="retiroLocal" className="flex items-center gap-3 rounded-xl border border-token-white/10 bg-token-white/5 px-4 py-3 text-sm text-token-slate-200">
               <input
                 id="retiroLocal"
                 type="radio"
@@ -163,7 +163,7 @@ function Checkout({ onVolver, onConfirmar }) {
             </label>
           </div>
           {errors.metodoEnvio && (
-            <p id="metodoEnvio-error" className="mt-2 text-sm text-rose-300">
+            <p id="metodoEnvio-error" className="mt-2 text-sm text-token-rose-300">
               {errors.metodoEnvio.message}
             </p>
           )}
@@ -171,7 +171,7 @@ function Checkout({ onVolver, onConfirmar }) {
 
         {metodoEnvio === 'domicilio' && (
           <label htmlFor="direccion" className="mt-4 block">
-            <span className="text-sm text-slate-300">Dirección</span>
+            <span className="text-sm text-token-slate-300">Dirección</span>
             <input
               id="direccion"
               type="text"
@@ -181,10 +181,10 @@ function Checkout({ onVolver, onConfirmar }) {
               {...register('direccion', {
                 required: 'La dirección es obligatoria para el envío a domicilio.',
               })}
-              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-brand focus:outline-none"
+              className="mt-2 w-full rounded-xl border border-token-white/10 bg-token-white/5 px-4 py-3 text-token-white placeholder:text-token-slate-400 focus:border-brand focus:outline-none"
             />
             {errors.direccion && (
-              <p id="direccion-error" className="mt-2 text-sm text-rose-300">
+              <p id="direccion-error" className="mt-2 text-sm text-token-rose-300">
                 {errors.direccion.message}
               </p>
             )}
@@ -192,7 +192,7 @@ function Checkout({ onVolver, onConfirmar }) {
         )}
 
         <label htmlFor="notas" className="mt-4 block">
-          <span className="text-sm text-slate-300">Notas (opcional)</span>
+          <span className="text-sm text-token-slate-300">Notas (opcional)</span>
           <textarea
             id="notas"
             rows="4"
@@ -206,16 +206,16 @@ function Checkout({ onVolver, onConfirmar }) {
                 message: 'Las notas no pueden superar los 200 caracteres.',
               },
             })}
-            className="mt-2 w-full resize-y rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-brand focus:outline-none"
+            className="mt-2 w-full resize-y rounded-xl border border-token-white/10 bg-token-white/5 px-4 py-3 text-token-white placeholder:text-token-slate-400 focus:border-brand focus:outline-none"
           />
           {errors.notas && (
-            <p id="notas-error" className="mt-2 text-sm text-rose-300">
+            <p id="notas-error" className="mt-2 text-sm text-token-rose-300">
               {errors.notas.message}
             </p>
           )}
         </label>
 
-        <label htmlFor="aceptaTerminos" className="mt-6 flex items-start gap-3 text-sm text-slate-300">
+        <label htmlFor="aceptaTerminos" className="mt-6 flex items-start gap-3 text-sm text-token-slate-300">
           <input
             id="aceptaTerminos"
             type="checkbox"
@@ -229,7 +229,7 @@ function Checkout({ onVolver, onConfirmar }) {
           <span>Acepto los términos y condiciones.</span>
         </label>
         {errors.aceptaTerminos && (
-          <p id="aceptaTerminos-error" className="mt-2 text-sm text-rose-300">
+          <p id="aceptaTerminos-error" className="mt-2 text-sm text-token-rose-300">
             {errors.aceptaTerminos.message}
           </p>
         )}
@@ -238,14 +238,14 @@ function Checkout({ onVolver, onConfirmar }) {
           <button
             type="button"
             onClick={onVolver}
-            className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 transition hover:bg-white/10"
+            className="rounded-full border border-token-white/10 bg-token-white/5 px-4 py-2 text-sm text-token-slate-200 transition hover:bg-token-white/10"
           >
             Volver al carrito
           </button>
           <button
             type="submit"
             disabled={carrito.length === 0}
-            className="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand/80 disabled:cursor-not-allowed disabled:opacity-40"
+            className="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-token-white transition hover:bg-brand/80 disabled:cursor-not-allowed disabled:opacity-40"
           >
             Confirmar pedido
           </button>

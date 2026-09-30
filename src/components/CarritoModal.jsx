@@ -31,12 +31,12 @@ function CarritoModal({ onIrAlCheckout }) {
         aria-expanded={abierto}
         className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1.5 text-xs font-medium transition sm:gap-2 sm:px-3 sm:text-sm ${
           isDarkMode
-            ? 'border-white/10 bg-white/5 text-white hover:bg-white/10'
-            : 'border-emerald-800/30 bg-emerald-700/10 text-emerald-950 hover:bg-emerald-700/20'
+            ? 'border-token-white/10 bg-token-white/5 text-token-white hover:bg-token-white/10'
+            : 'border-token-emerald-800/30 bg-token-emerald-700/10 text-token-emerald-950 hover:bg-token-emerald-700/20'
         }`}
       >
         <span>Mi carrito</span>
-        <span className="rounded-full bg-emerald-500 px-1.5 py-0.5 text-[10px] text-white sm:px-2 sm:text-xs">
+        <span className="rounded-full bg-token-emerald-500 px-1.5 py-0.5 text-[10px] text-token-white sm:px-2 sm:text-xs">
           {cantidadTotal}
         </span>
       </button>
@@ -45,7 +45,7 @@ function CarritoModal({ onIrAlCheckout }) {
         isOpen={abierto}
         onClose={() => setAbierto(false)}
         ariaLabel="Carrito de compras"
-        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-white/10 bg-blue-950 p-5 text-white shadow-2xl sm:p-6"
+        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-token-white/10 bg-token-blue-950 p-5 text-token-white shadow-2xl sm:p-6"
       >
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
@@ -62,7 +62,7 @@ function CarritoModal({ onIrAlCheckout }) {
                   type="button"
                   onClick={() => setAbierto(false)}
                   aria-label="Cerrar"
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200 transition hover:bg-white/10"
+                  className="rounded-full border border-token-white/10 bg-token-white/5 px-3 py-2 text-sm text-token-slate-200 transition hover:bg-token-white/10"
                 >
                   Cerrar
                 </button>
@@ -70,9 +70,9 @@ function CarritoModal({ onIrAlCheckout }) {
             </div>
 
             {carrito.length === 0 ? (
-              <div className="mt-5 rounded-xl border border-dashed border-white/10 p-6 text-center">
-                <p className="text-lg font-semibold text-white">Tu carrito está vacío</p>
-                <p className="mt-2 text-sm text-slate-400">
+              <div className="mt-5 rounded-xl border border-dashed border-token-white/10 p-6 text-center">
+                <p className="text-lg font-semibold text-token-white">Tu carrito está vacío</p>
+                <p className="mt-2 text-sm text-token-slate-400">
                   Elegí un dulce de la tienda y lo vas a encontrar acá.
                 </p>
               </div>
@@ -88,19 +88,19 @@ function CarritoModal({ onIrAlCheckout }) {
                     />
                   ))}
                 </ul>
-                <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-4">
+                <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-token-white/10 pt-4">
                   <div className="flex flex-wrap gap-3">
                     <button
                       type="button"
                       onClick={vaciar}
-                      className="rounded-full border border-rose-400/40 bg-rose-500/10 px-4 py-2 text-sm text-rose-200 transition hover:bg-rose-500/20"
+                      className="rounded-full border border-token-rose-400/40 bg-token-rose-500/10 px-4 py-2 text-sm text-token-rose-200 transition hover:bg-token-rose-500/20"
                     >
                       Vaciar carrito
                     </button>
                     <button
                       type="button"
                       onClick={irAlCheckout}
-                      className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-200 transition hover:bg-emerald-500/20"
+                      className="rounded-full border border-token-emerald-400/40 bg-token-emerald-500/10 px-4 py-2 text-sm font-semibold text-token-emerald-200 transition hover:bg-token-emerald-500/20"
                     >
                       Realizar compra
                     </button>

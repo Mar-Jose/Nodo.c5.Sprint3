@@ -3,9 +3,9 @@ import DulceCard from './DulceCard'
 function DulceList({ items = [] }) {
   if (!items.length) {
     return (
-      <div className="rounded-2xl border border-dashed border-white/10 bg-surface/70 p-10 text-center text-slate-300">
-        <p className="text-lg font-semibold text-white">No encontramos dulces que coincidan con tu búsqueda.</p>
-        <p className="mt-2 text-sm text-slate-400">Probá con otro nombre, origen o categoría.</p>
+      <div className="rounded-2xl border border-dashed border-token-white/10 bg-surface/70 p-10 text-center text-token-slate-300">
+        <p className="text-lg font-semibold text-token-white">No encontramos dulces que coincidan con tu búsqueda.</p>
+        <p className="mt-2 text-sm text-token-slate-400">Probá con otro nombre, origen o categoría.</p>
       </div>
     )
   }
