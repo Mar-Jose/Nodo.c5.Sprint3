@@ -24,8 +24,6 @@ export function ListaProvider({ children }) {
   )
 }
 
-// El Provider y su hook consumidor forman una única API pública del contexto.
-// eslint-disable-next-line react-refresh/only-export-components
 export function useListaContext() {
   const context = useContext(ListaContext)
 
