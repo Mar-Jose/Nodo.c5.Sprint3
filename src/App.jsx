@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Navbar from './components/layout/Navbar'
 import Checkout from './components/views/Checkout'
 import Confirmacion from './components/views/Confirmacion'
+import useLocalStorage from './hooks/useLocalStorage'
 import Tienda from './components/views/Tienda'
 import { useCarritoContext } from './context/carritoContext'
 import { VISTAS } from './data/vistas'
@@ -10,10 +11,17 @@ import dulcesCatamarca from './data/dulce'
 function App() {
   const [vista, setVista] = useState(VISTAS.TIENDA)
   const [nombreCliente, setNombreCliente] = useState('')
+  const [pedidos, setPedidos] = useLocalStorage('historialPedidos', [])
   const { vaciar } = useCarritoContext()
 
   const confirmarPedido = (pedido) => {
-    console.log('Pedido confirmado:', pedido)
+    const pedidoConfirmado = {
+      ...pedido,
+      id: Date.now(),
+      fecha: new Date().toISOString(),
+    }
+
+    setPedidos((actuales) => [pedidoConfirmado, ...actuales])
     setNombreCliente(pedido.nombreCompleto)
     vaciar()
     setVista(VISTAS.CONFIRMACION)
@@ -33,6 +41,7 @@ function App() {
       return (
         <Confirmacion
           nombre={nombreCliente}
+          pedidos={pedidos}
           onVolverTienda={() => setVista(VISTAS.TIENDA)}
         />
       )
@@ -50,6 +59,7 @@ function App() {
       {vista === VISTAS.TIENDA && (
         <Navbar
           items={dulcesCatamarca}
+          pedidos={pedidos}
           onIrAlCheckout={() => setVista(VISTAS.CHECKOUT)}
         />
       )}

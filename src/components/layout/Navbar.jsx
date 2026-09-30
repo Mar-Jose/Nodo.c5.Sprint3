@@ -1,11 +1,13 @@
 import { useMemo, useState } from 'react'
 import CarritoModal from '../CarritoModal'
+import HistorialPedidos from '../HistorialPedidos'
 import Modal from '../ui/Modal'
 import { useListaContext } from '../../context/listaContext'
 import { useThemeContext } from '../../context/themeContext'
 
-function Navbar({ items = [], onIrAlCheckout }) {
+function Navbar({ items = [], pedidos = [], onIrAlCheckout }) {
   const [abierto, setAbierto] = useState(false)
+  const [historialAbierto, setHistorialAbierto] = useState(false)
   const { lista, toggleItem, vaciarLista } = useListaContext()
   const { isDarkMode } = useThemeContext()
 
@@ -45,6 +47,15 @@ function Navbar({ items = [], onIrAlCheckout }) {
 
             <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
               <CarritoModal onIrAlCheckout={onIrAlCheckout} />
+              <button
+                type="button"
+                onClick={() => setHistorialAbierto(true)}
+                aria-haspopup="dialog"
+                aria-expanded={historialAbierto}
+                className="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border border-token-pink-300 bg-token-pink-100 px-2.5 py-1.5 text-xs font-medium text-token-pink-950 transition hover:bg-token-pink-200 sm:px-3 sm:text-sm"
+              >
+                Pedidos
+              </button>
               <button
                 type="button"
                 onClick={() => setAbierto((actual) => !actual)}
@@ -122,6 +133,29 @@ function Navbar({ items = [], onIrAlCheckout }) {
                 </ul>
               </>
             )}
+      </Modal>
+
+      <Modal
+        isOpen={historialAbierto}
+        onClose={() => setHistorialAbierto(false)}
+        ariaLabel="Historial de pedidos"
+        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-token-pink-300 bg-token-pink-100 p-4 text-token-pink-950 shadow-2xl sm:p-6"
+      >
+        <div className="mb-5 flex items-center justify-between gap-3">
+          <div>
+            <p className="text-xs uppercase tracking-[0.2em] text-token-pink-700">Tus compras</p>
+            <h2 className="mt-1 text-2xl font-bold text-token-pink-950">Historial de pedidos</h2>
+          </div>
+          <button
+            type="button"
+            onClick={() => setHistorialAbierto(false)}
+            aria-label="Cerrar"
+            className="rounded-full border border-token-pink-300 bg-token-pink-200 px-3 py-2 text-sm font-medium text-token-pink-950 transition hover:bg-token-pink-300"
+          >
+            Cerrar
+          </button>
+        </div>
+        <HistorialPedidos pedidos={pedidos} />
       </Modal>
     </>
   )
