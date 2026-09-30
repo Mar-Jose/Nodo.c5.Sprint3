@@ -76,6 +76,7 @@ function Navbar({ items = [], onIrAlCheckout }) {
               <button
                 type="button"
                 onClick={() => setAbierto(false)}
+                aria-label="Cerrar"
                 className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-slate-200 transition hover:border-brand/40 hover:text-white"
               >
                 Cerrar

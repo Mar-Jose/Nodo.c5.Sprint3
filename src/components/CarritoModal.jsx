@@ -61,6 +61,7 @@ function CarritoModal({ onIrAlCheckout }) {
                 <button
                   type="button"
                   onClick={() => setAbierto(false)}
+                  aria-label="Cerrar"
                   className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200 transition hover:bg-white/10"
                 >
                   Cerrar
