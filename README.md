@@ -1,17 +1,19 @@
 # Nombre de tu tienda
 
-🔗 **Demo:** https://tu-app.netlify.app
+🔗 **Demo:** https://sprint-3-react-mj.netlify.app
 
 ## Qué es
 Intenta ser una página web que permite ver productos, agregar al carrito y simular compras
 
 ## Cómo correrlo:
-pnpm install && pnpm run dev
+*
+En https://sprint-3-react-mj.netlify.app
 
-
-http://localhost:5179/
+*
 cd vite-project
 pnpm dev
+http://localhost:5179/
+
 
 ## Mis contextos
 CarritoContext.jsx:
