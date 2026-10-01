@@ -15,6 +15,7 @@ function Checkout({ onVolver, onConfirmar }) {
     watch,
     formState: { errors },
   } = useForm({
+    mode: 'onBlur',
     defaultValues: {
       metodoEnvio: 'domicilio',
     },
